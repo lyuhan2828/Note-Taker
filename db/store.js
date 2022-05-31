@@ -29,4 +29,22 @@ class Store {
         return parNote;
         });
     }
+    addNote(notes) {
+        const { title, text } = notes;
+        if(!title || !text) {
+            throw new Error("Note 'title' and 'text' cannot empty");
+        }
+        // add a id to notes using uuid
+        const newNote = {title, text, id:uuidv1()};
+        // get all the notes
+        // add new notes
+        // write update notes
+        return this.retrieveNotes()
+        .then((notes) => [...notes, newNote])
+        .then((updatedNotes) => this.write(updatedNotes))
+        .then(() => newNote);
+
+    }
 };
+
+module.exports = new Store();
