@@ -2,11 +2,11 @@ const util = require('util');
 const fs = require('fs');
 
 // uuid to generate unique id's
-const uuidv1 = require('uuidv1');
+const uuid = require('uuid');
 
-const readFileAsync = util.promisify('fs.readFile');
+const readFileAsync = util.promisify(fs.readFile);
 
-const writeFileAsync = util.promisify('fs.writeFile');
+const writeFileAsync = util.promisify(fs.writeFile);
 
 class Store {
     read() {
@@ -35,7 +35,7 @@ class Store {
             throw new Error("Note 'title' and 'text' cannot empty");
         }
         // add a id to notes using uuid
-        const newNote = {title, text, id:uuidv1()};
+        const newNote = {title, text, id:uuid()};
         // get all the notes
         // add new notes
         // write update notes
@@ -44,6 +44,16 @@ class Store {
         .then((updatedNotes) => this.write(updatedNotes))
         .then(() => newNote);
 
+    }
+    removeNote(deleteNote) {
+        this.read().then((notes) => {
+            let parNote; 
+            // checks if note is an array or it can be changed into one, if not send new array
+    
+            parNote = [].concat(JSON.parse(notes));
+            console.log(parNote);
+            console.log(deleteNote);
+        });
     }
 };
 
