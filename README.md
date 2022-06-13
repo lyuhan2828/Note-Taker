@@ -7,7 +7,7 @@ There will be a save button after inserting title and text.
 Then it will be saved on the left side of the browser.
 
 ## Installation
-Npm I
+Express.js
 
 ## Screenshot of index.html
 ![Note-taker ](https://user-images.githubusercontent.com/98847835/173419511-bb77752a-a9b4-4aec-90cc-81a9aff5435c.png)
