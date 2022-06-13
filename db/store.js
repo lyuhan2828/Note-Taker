@@ -49,10 +49,8 @@ class Store {
         this.read().then((notes) => {
             let parNote; 
             // checks if note is an array or it can be changed into one, if not send new array
-    
             parNote = [].concat(JSON.parse(notes));
             console.log(parNote);
-            console.log(deleteNote);
         });
     }
 };
